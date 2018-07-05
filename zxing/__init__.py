@@ -20,7 +20,8 @@ class BarCodeReader():
 
   def __init__(self, loc=""):
     if not len(loc):
-      if (os.environ.has_key("ZXING_LIBRARY")):
+      if ("ZXING_LIBRARY" in os.environ):
+      #if (os.environ.has_key("ZXING_LIBRARY")):
         loc = os.environ["ZXING_LIBRARY"]
       else:
         loc = ".."
