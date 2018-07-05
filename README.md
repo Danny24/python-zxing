@@ -6,21 +6,26 @@ This is a hack subprocess control library that gives you a reasonable Python int
 
 If you need to threshold or filter your image prior to sending to ZXing, I recommend using functions from [SimpleCV](http://simplecv.org).
 
-## Usage
+## Usage (update steps for python3 in Raspberry Pi)
 
 ```
+sudo apt-get install maven
 git clone https://github.com/zxing/zxing.git
-cd zxing-master
+cd zxing
 mvn install
 cd core
 wget http://central.maven.org/maven2/com/google/zxing/core/2.2/core-2.2.jar
 mv core-2.2.jar core.jar # Rename
 mvn install
-cd zxing-master/javase
+cd ..
+cd javase
 wget http://central.maven.org/maven2/com/google/zxing/javase/2.2/javase-2.2.jar 
 mv javase-2.2.jar javase.jar # Rename
 mvn install
-git clone git://github.com/oostendo/python-zxing.git
+cd ..
+git clone git://github.com/Danny24/python-zxing.git
+cd python-zxing
+sudo python3 setup.py install
 ```
 
 The library consists of two classes, BarCodeReader and BarCode.  BarCode parses
@@ -58,5 +63,17 @@ code_list = reader.decode("/tmp/barcodes", True)
 ```
 
 decode() takes an image path, directory, or list of images and has an optional parameter to use the "try_harder" option.  If no barcode is found, it returns None objects. 
+
+Example test code:
+
+```
+import zxing
+
+testimage = "sample.png"
+
+zx = zxing.BarCodeReader("/home/pi/zxing")
+barcode = zx.decode(testimage)
+print(barcode.data)
+```
 
 Installation is manual. 
