@@ -9,7 +9,7 @@ If you need to threshold or filter your image prior to sending to ZXing, I recom
 ## Usage (update steps for python3 in Raspberry Pi)
 
 ```
-sudo apt-get install maven
+sudo apt-get install maven -y
 git clone https://github.com/zxing/zxing.git
 cd zxing
 mvn install
