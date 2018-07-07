@@ -26,6 +26,7 @@ cd ..
 git clone git://github.com/Danny24/python-zxing.git
 cd python-zxing
 sudo python3 setup.py install
+cd..
 ```
 
 The library consists of two classes, BarCodeReader and BarCode.  BarCode parses
